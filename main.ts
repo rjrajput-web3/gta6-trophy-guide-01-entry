@@ -4,9 +4,9 @@
 // Chrome and works with the network off, its trophy list and guides live in
 // app/data/trophies.json, and screenshots/ holds four renders of the app.
 // This program hands the guide in: it copies app/ and screenshots/ from
-// beside this file to /output and writes /output/dossier.json with the
-// vendored make.fun library, the summary the judge reads (the screenshots,
-// the first load's files and bytes, and the source). Leave
+// beside this file to the output directory and writes dossier.json there
+// with the vendored make.fun library — the summary the judge reads (the
+// screenshots, the first load's files and bytes, and the source). Leave
 // vendor/makefun-frontend.ts exactly as the kit shipped it: the scorer
 // requires dossier.json to be byte for byte what its own copy writes.
 //
