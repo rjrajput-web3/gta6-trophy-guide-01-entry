@@ -1,104 +1,127 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Leonida Trophy Atlas — GTA VI Trophy Guide &amp; Tracker</title>
-<meta name="description" content="The offline guide and tracker for all 55 PlayStation 5 trophies of Grand Theft Auto VI: checklist, roadmap to the Platinum, missable flags, and a cited guide for every trophy.">
-<link rel="stylesheet" href="style.css">
+<title>Vice City Trophy Atlas — GTA VI Trophy Guide &amp; Tracker</title>
+<meta name="description" content="A complete offline guide and tracker for all 55 PlayStation 5 trophies of Grand Theft Auto VI: cited guides, a roadmap to the platinum, missable flags and a saved checklist.">
+<link rel="stylesheet" href="./style.css">
 </head>
 <body>
 <header class="masthead">
-  <div class="brand">
-    <div class="brand-mark" aria-hidden="true">VI</div>
-    <div>
-      <h1>Leonida Trophy Atlas</h1>
-      <p class="subtitle">GTA VI &middot; 55 PlayStation 5 trophies &middot; offline guide &amp; tracker</p>
-    </div>
-  </div>
-  <div class="progress" id="progress" aria-live="polite">
-    <div class="progress-numbers"><strong id="earned-count">0 / 55</strong><span id="earned-percent">0% to the Platinum</span></div>
-    <div class="progress-bar"><div id="progress-fill"></div></div>
-    <p class="progress-grades" id="progress-grades"></p>
+  <div class="masthead-inner">
+    <p class="eyebrow">Grand Theft Auto VI &middot; PlayStation 5 &middot; Unofficial fan guide</p>
+    <h1>Vice City Trophy Atlas</h1>
+    <p class="tagline">Every one of the 55 trophies, with a guide in our own words, a roadmap to the platinum, and a checklist that remembers your progress.</p>
+    <nav class="tabs" aria-label="Guide sections">
+      <a class="tab" data-route="" href="#/">Checklist</a>
+      <a class="tab" data-route="roadmap" href="#/roadmap">Roadmap</a>
+      <a class="tab" data-route="missable" href="#/missable">Missable</a>
+      <a class="tab" data-route="sources" href="#/sources">Sources</a>
+    </nav>
   </div>
 </header>
 
-<nav class="tabs" aria-label="Guide sections">
-  <button type="button" data-view="checklist" class="tab active">Checklist</button>
-  <button type="button" data-view="roadmap" class="tab">Roadmap to the Platinum</button>
-  <button type="button" data-view="completion" class="tab">100% Completion</button>
-</nav>
-
-<section class="controls" aria-label="Tracker controls">
-  <label class="search">Search <input id="search" type="search" placeholder="Search a trophy, mission or place…" autocomplete="off"></label>
-  <div class="kinds" role="group" aria-label="Filter by kind">
-    <button type="button" data-kind="all" class="kind active">All</button>
-    <button type="button" data-kind="story" class="kind">Story</button>
-    <button type="button" data-kind="missable" class="kind">Missable</button>
-    <button type="button" data-kind="collectibles" class="kind">Collectibles</button>
-    <button type="button" data-kind="activities" class="kind">Activities</button>
-    <button type="button" data-kind="online" class="kind">Online</button>
-  </div>
-  <label>Grade
-    <select id="grade">
-      <option value="all">All grades</option>
-      <option value="platinum">Platinum</option>
-      <option value="gold">Gold</option>
-      <option value="silver">Silver</option>
-      <option value="bronze">Bronze</option>
-    </select>
-  </label>
-  <label>Show
-    <select id="earned-filter">
-      <option value="all">All trophies</option>
-      <option value="earned">Earned only</option>
-      <option value="missing">Not earned yet</option>
-    </select>
-  </label>
-  <label class="spoiler-toggle"><input id="spoiler" type="checkbox" checked> Hide story spoilers</label>
-  <div class="io">
-    <button id="export" type="button">Export progress</button>
-    <label class="import">Import progress <input id="import" type="file" accept="application/json,.json"></label>
-  </div>
-</section>
-
 <main>
-  <section id="view-checklist" class="view">
-    <div class="layout">
-      <div class="list-wrap">
-        <p id="missable-banner" class="banner">One trophy can be missed: <strong>Positive Mental Attitude</strong>. Do Lucia&rsquo;s balcony meditation in Chapter 1, before the chapter ends.</p>
-        <p id="list-summary" class="list-summary"></p>
-        <table class="trophies">
-          <thead><tr><th scope="col">Earned</th><th scope="col">Trophy</th><th scope="col">Grade</th><th scope="col">Kind</th><th scope="col">Guide</th></tr></thead>
-          <tbody id="rows"></tbody>
-        </table>
-        <p id="empty-state" class="empty" hidden></p>
-      </div>
-      <aside id="detail" class="detail" aria-live="polite"></aside>
+  <section class="progress-card" aria-label="Your progress">
+    <div class="progress-numbers">
+      <div><span class="big" id="earned-count">0</span><span class="label">earned</span></div>
+      <div><span class="big">/ 55</span><span class="label">trophies</span></div>
+      <div><span class="big" id="points-count">0</span><span class="label">trophy points</span></div>
+      <div><span class="big" id="percent-count">0%</span><span class="label">complete</span></div>
+    </div>
+    <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="55" aria-valuenow="0" id="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+    <p class="progress-note" id="progress-note">Tick a trophy when you earn it. Your progress is saved in this browser.</p>
+    <div class="grade-counts" id="grade-counts"></div>
+  </section>
+
+  <section class="toolbar" id="toolbar" aria-label="Search and filter">
+    <input id="search" type="search" placeholder="Search trophies by name or description…" aria-label="Search trophies">
+    <div class="chips" id="kind-chips" role="group" aria-label="Filter by kind">
+      <button type="button" class="chip is-active" data-kind="all">All</button>
+      <button type="button" class="chip" data-kind="story">Story</button>
+      <button type="button" class="chip" data-kind="missable">Missable</button>
+      <button type="button" class="chip" data-kind="collectible">Collectibles</button>
+      <button type="button" class="chip" data-kind="activity">Activities</button>
+      <button type="button" class="chip" data-kind="online">Online</button>
+    </div>
+    <div class="toolbar-row">
+      <label>Grade
+        <select id="grade-filter">
+          <option value="all">All grades</option>
+          <option value="platinum">Platinum</option>
+          <option value="gold">Gold</option>
+          <option value="silver">Silver</option>
+          <option value="bronze">Bronze</option>
+        </select>
+      </label>
+      <label>Sort
+        <select id="sort-order">
+          <option value="default">Roadmap order</option>
+          <option value="grade">Grade, best first</option>
+          <option value="name">Name A to Z</option>
+          <option value="missing">Unearned first</option>
+        </select>
+      </label>
+      <label class="toggle">
+        <input type="checkbox" id="spoiler-toggle">
+        <span>Spoiler-safe mode: hide story trophies until earned</span>
+      </label>
+      <label class="toggle">
+        <input type="checkbox" id="earned-only">
+        <span>Unearned only</span>
+      </label>
+    </div>
+    <div class="toolbar-row">
+      <button type="button" class="action" id="export-btn">Export progress</button>
+      <button type="button" class="action" id="import-btn">Import progress</button>
+      <input type="file" id="import-file" accept="application/json,.json" hidden>
+      <button type="button" class="action danger" id="reset-btn">Reset progress</button>
+      <span class="result-count" id="result-count"></span>
     </div>
   </section>
 
-  <section id="view-roadmap" class="view" hidden>
-    <p class="lede">One playthrough is enough for the Platinum if you guard the missable step in Chapter 1 and keep a save at the start of every chapter. Roughly 200 hours in all: 60 to 80 of story, about 100 of checklist, and the rest cleanup.</p>
-    <ol id="phases" class="phases"></ol>
-    <p class="source-note">Roadmap built from the official trophy descriptions, with timings and warnings from the launch guides cited in each trophy. Sources: Output Lag, EGamers, GTA Zone, Press-Start.</p>
+  <section id="view-list" class="view" aria-label="Trophy checklist">
+    <div class="card-grid" id="trophy-grid"></div>
+    <p class="empty" id="empty-state" hidden>No trophies match these filters. Try clearing the search or choosing another kind.</p>
   </section>
 
-  <section id="view-completion" class="view" hidden>
-    <p class="lede">A Long Road wants 100% completion. The checklist itself appears after the story under Progress &gt; Stats &gt; 100% Completion, but earlier work counts. Trophy targets sit below the checklist numbers, so earn the trophy first and keep going.</p>
-    <table class="completion">
-      <thead><tr><th scope="col">What</th><th scope="col">Trophy needs</th><th scope="col">100% checklist asks</th></tr></thead>
-      <tbody id="completion-rows"></tbody>
-    </table>
-    <p class="source-note">Figures from the launch guides: Press-Start published the checklist, EGamers compared the two columns. Meditation is the one disagreement: guides say 18 spots for the trophy and 15 for the checklist, so visit every spot you find.</p>
+  <section id="view-roadmap" class="view" aria-label="Roadmap to the platinum" hidden>
+    <h2>The road to the platinum</h2>
+    <p class="section-intro">Six stages, in the order to play them. Stages 1 to 3 follow the story, so the missable trophies are cleared while their moments are still open. Stages 4 and 5 are the free-roam grind, and stage 6 is the final sweep to 100%.</p>
+    <div id="roadmap-stages"></div>
+  </section>
+
+  <section id="view-missable" class="view" aria-label="Missable trophies" hidden>
+    <h2>Missable trophies</h2>
+    <p class="section-intro">These trophies are tied to one story moment: a single mission, a partner job, or a one-time place. Do each one on your first pass, while its moment is open. Everything else in the list can be earned in free roam at any time.</p>
+    <div class="card-grid" id="missable-grid"></div>
+  </section>
+
+  <section id="view-sources" class="view" aria-label="Sources" hidden>
+    <h2>Where the facts come from</h2>
+    <p class="section-intro">The trophy names, descriptions and grades are the official PlayStation list, as published on the trophy tracking sites below. Every guide on this site is written in our own words for this guide; the sources are cited beside each trophy so you can check any fact.</p>
+    <ul class="source-list">
+      <li><strong>Exophase trophy list</strong> — official trophy names, descriptions and grades for Grand Theft Auto VI on PlayStation 5.</li>
+      <li><strong>PSNProfiles trophy list</strong> — the same official list, cross-checked name for name against Exophase.</li>
+      <li><strong>IGN GTA 6 wiki</strong> — activity and mission guidance: shooting range, races, drone races, fishing and side activities.</li>
+      <li><strong>GTA Wiki</strong> — collectibles, exploration and Leonida locations: meditation spots, cards, vehicles and areas.</li>
+      <li><strong>Rockstar Games official GTA VI site</strong> — the game's own announcements and world details.</li>
+    </ul>
+    <p class="section-intro">A source is cited, never copied. If a guide here ever disagrees with the official list, the official list wins.</p>
+  </section>
+
+  <section id="view-detail" class="view" aria-label="Trophy detail" hidden>
+    <button type="button" class="action" id="back-btn">&larr; Back to the checklist</button>
+    <article class="detail" id="detail-body"></article>
   </section>
 </main>
 
 <footer>
-  <p>Unofficial fan guide. Grand Theft Auto and GTA are marks of Rockstar Games; this guide uses no Rockstar logo, artwork or game screenshots. Trophy names, descriptions and grades are as PlayStation publishes them. Guides are written for this page and cite their sources beside each trophy.</p>
-  <p>Sources for the list and the guides: the official PlayStation trophy list via Exophase (reported by Push Square), Output Lag, EGamers, Press-Start, GTA Vice City Hub, GTA Zone, HowToVideoGame, GTABase and PowerPyx. Five trophies had no confirmed method at launch; their guides say so.</p>
+  <p>Vice City Trophy Atlas is an unofficial fan guide. Grand Theft Auto and GTA are trademarks of Take-Two Interactive; this guide uses no Rockstar Games logo, artwork or screenshots of the game. Trophy names and descriptions are shown as PlayStation publishes them.</p>
+  <p class="foot-note">Works fully offline. Progress is saved in your browser only, and never leaves your device unless you export it.</p>
 </footer>
 
-<script type="module" src="app.js"></script>
+<script type="module" src="./app.js"></script>
 </body>
 </html>
