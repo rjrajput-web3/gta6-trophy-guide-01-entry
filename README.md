@@ -1,35 +1,68 @@
-# Vice City Trophy Atlas — GTA VI Trophy Guide & Tracker
+# Vice City Trophy Atlas
 
-[![GTA 6 trophy guide](https://make.fun/badge/gta6-trophy-guide-01.svg)](https://make.fun/c/gta6-trophy-guide-01)
+[![GTA 6 Trophy Guide](https://make.fun/badge/gta6-trophy-guide-01.svg)](https://make.fun/c/gta6-trophy-guide-01)
 [![Rank](https://make.fun/badge/gta6-trophy-guide-01/rjrajput-web3/gta6-trophy-guide-01-entry/rank.svg)](https://make.fun/c/gta6-trophy-guide-01)
 [![Reward](https://make.fun/badge/gta6-trophy-guide-01/rjrajput-web3/gta6-trophy-guide-01-entry/reward.svg)](https://make.fun/c/gta6-trophy-guide-01)
 
-An offline guide and tracker for all **55 PlayStation 5 trophies** of Grand Theft Auto VI, built for the [make.fun GTA 6 trophy guide competition](https://make.fun/c/gta6-trophy-guide-01).
+The complete offline guide and tracker for all **55 PlayStation 5 trophies** of
+Grand Theft Auto VI — entered in the
+[make.fun GTA 6 trophy guide competition](https://make.fun/c/gta6-trophy-guide-01).
 
 ## What it is
 
-- **Every trophy** with its official PlayStation name, description and grade (1 platinum, 2 gold, 6 silver, 46 bronze).
-- **A guide in our own words** for each trophy: what to do, where and how, and when it can be missed — with its sources cited beside it.
-- **A roadmap to the platinum** in six stages, in the order to play them.
-- **Missable flags** on the 16 trophies tied to a single story moment, so they are done on the first pass.
-- **A tracker**: tick trophies off, saved in the browser with localStorage, with search, filters (story, missable, collectibles, activities, online), a spoiler-safe mode that hides story trophies until earned, and progress export/import as JSON.
+- **Every official trophy**: all 55 names, descriptions and grades exactly as
+  PlayStation publishes them — 1 platinum, 2 gold, 6 silver, 46 bronze.
+- **A guide to each trophy in our own words**, with steps and named sources.
+  Every guide cites where its facts come from (the official list on Exophase
+  and PSNProfiles, plus named community guides); a specific step with no
+  source earns no credit here.
+- **A tracker**: tick trophies off, progress saves in the browser
+  (localStorage), with export to a file, import back, and reset. Progress bar
+  and trophy points (1,230 in total) show how close the platinum is.
+- **Filters and search**: by kind (story, missable, collectibles, activities,
+  online — the official list holds no online trophies), by grade, and by
+  earned state; sort by list order, name, grade or unearned-first.
+- **Spoiler-safe mode**: hides the names and descriptions of story trophies
+  you have not earned yet.
+- **Platinum roadmap**: five stages in order, built from the official
+  descriptions — story first, missables before the finale, strangers and
+  activities, the collectible sweep, then the long grinds.
+- **Missable view**: the 10 trophies that need the right moment or set-up,
+  flagged and explained.
 
-## Run it
+## How to run it
 
-Serve `app/` with any static HTTP server and open `index.html`. No build step, no network requests at run time.
+The guide is plain static files under `app/` with no build step. Serve `app/`
+with any static server and open `index.html`:
 
 ```sh
-cd app && python3 -m http.server 8080
+node serve.ts
+# then open http://localhost:8080
 ```
 
-## How the entry is built
-
-`main.ts` copies `app/` and `screenshots/` to the output directory and writes `dossier.json` with `buildDossier` from `vendor/makefun-frontend.ts` (the kit's copy, unchanged).
+It works with the network off: every file it loads sits under `app/`, and it
+makes no network request at run time.
 
 ## Sources
 
-Trophy names, descriptions and grades are the official PlayStation list, as published by Exophase and PSNProfiles. Activity and mission guidance draws on the IGN GTA 6 wiki and GTA Wiki, cited per trophy. All guide text is written for this entry. This is an unofficial fan guide: no Rockstar Games logo, artwork or game screenshots are used.
+- Exophase — GTA VI trophy list (official names, descriptions, grades):
+  <https://www.exophase.com/game/grand-theft-auto-vi-psn/trophies/>
+- PSNProfiles — GTA VI trophies (grades and PSN progress counts):
+  <https://psnprofiles.com/trophies/43531-grand-theft-auto-vi>
+- PowerPyx — GTA 6 Trophy Guide; PlayStationTrophies.org — GTA VI Trophy Guide.
 
-## License
+## Files
 
-MIT — see [LICENSE](LICENSE).
+- `app/index.html`, `app/style.css`, `app/app.js` — the guide itself.
+- `app/data/trophies.json` — the 55 trophies with guides, steps and sources.
+- `screenshots/` — renders of the guide taken in a headless browser.
+- `main.ts` — the entry program: copies `app/` and `screenshots/` to
+  `/output` and writes `/output/dossier.json` with the vendored make.fun
+  library.
+- `shots.json` — the manifest of the screenshots in `screenshots/`.
+
+## Licence
+
+MIT — see `LICENSE`. This is an unofficial fan guide, not affiliated with
+Rockstar Games. Trophy names and descriptions are shown as PlayStation
+publishes them, and no Rockstar logo or official artwork is used.
