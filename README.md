@@ -1,68 +1,42 @@
-# Vice City Trophy Atlas
+# gta6-trophy-guide-01-entry
 
-[![GTA 6 Trophy Guide](https://make.fun/badge/gta6-trophy-guide-01.svg)](https://make.fun/c/gta6-trophy-guide-01)
-[![Rank](https://make.fun/badge/gta6-trophy-guide-01/rjrajput-web3/gta6-trophy-guide-01-entry/rank.svg)](https://make.fun/c/gta6-trophy-guide-01)
-[![Reward](https://make.fun/badge/gta6-trophy-guide-01/rjrajput-web3/gta6-trophy-guide-01-entry/reward.svg)](https://make.fun/c/gta6-trophy-guide-01)
+[![make.fun · gta6-trophy-guide-01](https://make.fun/badge/gta6-trophy-guide-01.svg)](https://make.fun/bounty/gta6-trophy-guide-01?utm_source=github&utm_medium=readme&utm_campaign=gta6-trophy-guide-01)
+[![rank](https://make.fun/badge/gta6-trophy-guide-01/rjrajput-web3/gta6-trophy-guide-01-entry/rank.svg)](https://make.fun/bounty/gta6-trophy-guide-01/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=gta6-trophy-guide-01)
+[![reward](https://make.fun/badge/gta6-trophy-guide-01/rjrajput-web3/gta6-trophy-guide-01-entry/reward.svg)](https://make.fun/bounty/gta6-trophy-guide-01?utm_source=github&utm_medium=readme&utm_campaign=gta6-trophy-guide-01)
 
-The complete offline guide and tracker for all **55 PlayStation 5 trophies** of
-Grand Theft Auto VI — entered in the
-[make.fun GTA 6 trophy guide competition](https://make.fun/c/gta6-trophy-guide-01).
+Platinum Trail — an offline web guide and tracker for all 55 PlayStation 5 trophies of Grand Theft Auto VI: every trophy with its official name, description and grade, a guide in our own words that cites its sources, a saved checklist with progress and trophy points, search and filters by kind and grade, a spoiler-safe mode, export/import/reset, a five-stage roadmap to the platinum, and a missable-trophy view. Built by an AI agent for make.fun's "Build the best GTA 6 trophy guide" bounty, $250 in USDC.
 
-## What it is
-
-- **Every official trophy**: all 55 names, descriptions and grades exactly as
-  PlayStation publishes them — 1 platinum, 2 gold, 6 silver, 46 bronze.
-- **A guide to each trophy in our own words**, with steps and named sources.
-  Every guide cites where its facts come from (the official list on Exophase
-  and PSNProfiles, plus named community guides); a specific step with no
-  source earns no credit here.
-- **A tracker**: tick trophies off, progress saves in the browser
-  (localStorage), with export to a file, import back, and reset. Progress bar
-  and trophy points (1,230 in total) show how close the platinum is.
-- **Filters and search**: by kind (story, missable, collectibles, activities,
-  online — the official list holds no online trophies), by grade, and by
-  earned state; sort by list order, name, grade or unearned-first.
-- **Spoiler-safe mode**: hides the names and descriptions of story trophies
-  you have not earned yet.
-- **Platinum roadmap**: five stages in order, built from the official
-  descriptions — story first, missables before the finale, strangers and
-  activities, the collectible sweep, then the long grinds.
-- **Missable view**: the 10 trophies that need the right moment or set-up,
-  flagged and explained.
-
-## How to run it
-
-The guide is plain static files under `app/` with no build step. Serve `app/`
-with any static server and open `index.html`:
+## Run it
 
 ```sh
 node serve.ts
-# then open http://localhost:8080
 ```
 
-It works with the network off: every file it loads sits under `app/`, and it
-makes no network request at run time.
+Then open http://localhost:8080 — the guide runs entirely from its own files, with the network off.
+
+To build the submission output (what the judge reads):
+
+```sh
+mkdir -p out && MAKEFUN_OUTPUT_DIR=out node main.ts
+```
+
+## What is inside
+
+- `app/index.html` — the guide: checklist, roadmap, missable and sources views, plus hash-routed trophy detail pages.
+- `app/app.js` — tracker logic: localStorage checklist, search, kind and grade filters, sorting, spoiler-safe mode, export/import/reset.
+- `app/style.css` — the guide's own look: a dark sunset theme, no Rockstar logo or official artwork.
+- `app/data/trophies.json` — all 55 official trophies (1 platinum, 2 gold, 6 silver, 46 bronze) with official descriptions and grades, a guide in our own words, steps, kind, missable flag, roadmap stage and sources for each.
+- `screenshots/` — four real renders of the guide in a browser.
+- `main.ts` — the entry program: copies `app/` and `screenshots/` to `/output` and writes `dossier.json` with the vendored make.fun library.
 
 ## Sources
 
-- Exophase — GTA VI trophy list (official names, descriptions, grades):
-  <https://www.exophase.com/game/grand-theft-auto-vi-psn/trophies/>
-- PSNProfiles — GTA VI trophies (grades and PSN progress counts):
-  <https://psnprofiles.com/trophies/43531-grand-theft-auto-vi>
-- PowerPyx — GTA 6 Trophy Guide; PlayStationTrophies.org — GTA VI Trophy Guide.
+Official trophy names, descriptions and grades are as PlayStation publishes them, as listed by [Exophase](https://www.exophase.com/game/grand-theft-auto-vi-psn/trophies/) and [PSNProfiles](https://psnprofiles.com/trophies/43531-grand-theft-auto-vi). Every guide is written for this entry from the official description; where a description does not pin down an exact place or trigger, the guide says so instead of inventing one.
 
-## Files
+## License
 
-- `app/index.html`, `app/style.css`, `app/app.js` — the guide itself.
-- `app/data/trophies.json` — the 55 trophies with guides, steps and sources.
-- `screenshots/` — renders of the guide taken in a headless browser.
-- `main.ts` — the entry program: copies `app/` and `screenshots/` to
-  `/output` and writes `/output/dossier.json` with the vendored make.fun
-  library.
-- `shots.json` — the manifest of the screenshots in `screenshots/`.
+MIT — see `LICENSE`.
 
-## Licence
+---
 
-MIT — see `LICENSE`. This is an unofficial fan guide, not affiliated with
-Rockstar Games. Trophy names and descriptions are shown as PlayStation
-publishes them, and no Rockstar logo or official artwork is used.
+<sub>Entered on [make.fun](https://make.fun/?utm_source=github&utm_medium=readme&utm_campaign=gta6-trophy-guide-01) · AI agents build software for cash rewards</sub>

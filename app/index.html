@@ -3,117 +3,115 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Vice City Trophy Atlas — GTA 6 Trophy Guide &amp; Tracker</title>
-<meta name="description" content="The complete offline guide and tracker for all 55 GTA 6 trophies on PlayStation 5: official names, descriptions and grades, cited guides, a platinum roadmap and missable flags.">
+<title>Platinum Trail — GTA VI Trophy Guide &amp; Tracker</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <header class="masthead">
   <div class="masthead-inner">
-    <div>
-      <p class="eyebrow">Grand Theft Auto VI &middot; PlayStation 5 &middot; Offline guide</p>
-      <h1>Vice City Trophy Atlas</h1>
-      <p class="tagline">Every one of the 55 official trophies, a guide to each in our own words with its sources, and a tracker that remembers your progress.</p>
+    <p class="eyebrow">Grand Theft Auto VI &middot; PlayStation 5 &middot; Offline guide</p>
+    <h1>Platinum Trail</h1>
+    <p class="tagline">Every one of the 55 official trophies — named, graded, guided and tracked to the platinum.</p>
+    <div class="counts" id="counts" aria-live="polite">
+      <span><strong id="count-total">55</strong> trophies</span>
+      <span><strong>1</strong> platinum</span>
+      <span><strong>2</strong> gold</span>
+      <span><strong>6</strong> silver</span>
+      <span><strong>46</strong> bronze</span>
     </div>
-    <div class="progress-card" id="progressCard">
-      <div class="big-count"><span id="earnedCount">0</span><span class="of">/ 55</span></div>
-      <div class="bar"><div class="bar-fill" id="progressFill" style="width:0%"></div></div>
-      <p class="progress-line"><span id="pointsLine">0 of 1,230 trophy points</span> &middot; <span id="percentLine">0% to platinum</span></p>
-      <p class="grade-line">1 platinum &middot; 2 gold &middot; 6 silver &middot; 46 bronze</p>
+    <div class="progress-wrap">
+      <div class="progress-line"><span id="progress-label">0 of 55 earned</span><span id="points-label">0 / 1,230 trophy points</span></div>
+      <div class="progress-bar"><div class="progress-fill" id="progress-fill" style="width:0%"></div></div>
     </div>
   </div>
-  <nav class="tabs" aria-label="Guide sections">
-    <a href="#/" data-route="">Checklist</a>
-    <a href="#/roadmap" data-route="roadmap">Platinum Roadmap</a>
-    <a href="#/missable" data-route="missable">Missable <span class="pill" id="missableCount">10</span></a>
-    <a href="#/sources" data-route="sources">Sources</a>
-  </nav>
 </header>
 
-<main>
+<nav class="views" aria-label="Views">
+  <a href="#/" data-view="checklist" class="view-link">Checklist</a>
+  <a href="#/roadmap" data-view="roadmap" class="view-link">Platinum Roadmap</a>
+  <a href="#/missable" data-view="missable" class="view-link">Missable <span class="pill" id="missable-pill">8</span></a>
+  <a href="#/sources" data-view="sources" class="view-link">Sources</a>
+</nav>
+
+<section class="toolbar" aria-label="Filters and tools">
+  <input type="search" id="search" placeholder="Search trophies by name or description…" aria-label="Search trophies">
+  <div class="kind-filters" role="group" aria-label="Filter by kind">
+    <button type="button" data-kind="all" class="kind-btn active">All</button>
+    <button type="button" data-kind="story" class="kind-btn">Story</button>
+    <button type="button" data-kind="missable" class="kind-btn">Missable</button>
+    <button type="button" data-kind="collectibles" class="kind-btn">Collectibles</button>
+    <button type="button" data-kind="activities" class="kind-btn">Activities</button>
+    <button type="button" data-kind="online" class="kind-btn">Online</button>
+  </div>
+  <label class="field">Grade
+    <select id="grade-filter">
+      <option value="all">All grades</option>
+      <option value="platinum">Platinum</option>
+      <option value="gold">Gold</option>
+      <option value="silver">Silver</option>
+      <option value="bronze">Bronze</option>
+    </select>
+  </label>
+  <label class="field">Sort
+    <select id="sort">
+      <option value="list">List order</option>
+      <option value="name">Name A–Z</option>
+      <option value="grade">Grade (best first)</option>
+      <option value="kind">Kind</option>
+    </select>
+  </label>
+  <label class="toggle"><input type="checkbox" id="spoiler-toggle"> Spoiler-safe mode</label>
+  <div class="tools">
+    <button type="button" id="export-btn">Export progress</button>
+    <button type="button" id="import-btn">Import progress</button>
+    <input type="file" id="import-file" accept=".json,application/json" hidden>
+    <button type="button" id="reset-btn">Reset</button>
+  </div>
+  <p class="spoiler-note" id="spoiler-note" hidden>Spoiler-safe mode is on: story trophy names and descriptions are hidden until you earn them.</p>
+</section>
+
+<main id="main">
   <section id="view-checklist" class="view">
-    <div class="toolbar">
-      <label class="search-box">Search trophies
-        <input id="search" type="search" placeholder="Search by name, mission or keyword…" autocomplete="off">
-      </label>
-      <div class="chip-row" id="kindChips" role="group" aria-label="Filter by kind">
-        <button type="button" data-kind="all" class="chip active">All 55</button>
-        <button type="button" data-kind="story" class="chip">Story</button>
-        <button type="button" data-kind="missable" class="chip">Missable</button>
-        <button type="button" data-kind="collectibles" class="chip">Collectibles</button>
-        <button type="button" data-kind="activities" class="chip">Activities</button>
-        <button type="button" data-kind="online" class="chip">Online</button>
-      </div>
-      <div class="toolbar-row">
-        <label>Grade
-          <select id="gradeFilter">
-            <option value="all">All grades</option>
-            <option value="platinum">Platinum</option>
-            <option value="gold">Gold</option>
-            <option value="silver">Silver</option>
-            <option value="bronze">Bronze</option>
-          </select>
-        </label>
-        <label>Sort
-          <select id="sortOrder">
-            <option value="list">Official list order</option>
-            <option value="name">Name A–Z</option>
-            <option value="grade">Grade (best first)</option>
-            <option value="unearned">Unearned first</option>
-          </select>
-        </label>
-        <label class="toggle"><input type="checkbox" id="spoilerToggle"> Spoiler-safe mode</label>
-        <label class="toggle"><input type="checkbox" id="earnedOnly"> Earned only</label>
-      </div>
-      <p class="hint" id="filterHint">Showing all 55 trophies. Spoiler-safe mode hides the names and descriptions of story trophies you have not earned yet.</p>
-    </div>
-    <div class="layout">
-      <div class="list-col">
-        <p class="online-note" id="onlineNote" hidden>The official list holds no online trophies: every one of the 55 can be earned offline in single-player.</p>
-        <ul class="trophy-list" id="trophyList"></ul>
-        <p class="empty" id="emptyNote" hidden>No trophies match these filters. Clear the search or pick another kind.</p>
-      </div>
-      <aside class="detail-col" id="detailPane" aria-live="polite">
-        <p class="detail-empty">Select a trophy to read its guide, steps and sources.</p>
-      </aside>
-    </div>
+    <p class="result-line" id="result-line"></p>
+    <ul class="trophy-list" id="trophy-list"></ul>
+    <p class="empty" id="empty-state" hidden>No trophies match these filters. Clear the search or pick another kind.</p>
   </section>
 
   <section id="view-roadmap" class="view" hidden>
     <h2>The road to the platinum</h2>
-    <p class="lede">Built from the official descriptions alone: story first, missables as they come, collectibles between chapters, and the long grinds last. Five stages, in order.</p>
-    <ol class="roadmap" id="roadmapList"></ol>
+    <p class="lede">Built from the official descriptions: five stages, in order. Finish one stage before the next where the guide says so — the missable trophies live in stages 1 and 2.</p>
+    <ol class="roadmap" id="roadmap"></ol>
   </section>
 
   <section id="view-missable" class="view" hidden>
-    <h2>Missable trophies — do these on time</h2>
-    <p class="lede">Ten trophies need the right moment or the right set-up. Story chapter and mission trophies are not listed here: they come from story progress and missions can be replayed. The ten below are the ones to set up deliberately, before the finale where it matters.</p>
-    <ul class="trophy-list" id="missableList"></ul>
+    <h2>Missable trophies — do these before the finale</h2>
+    <p class="lede">Eight trophies need a person, a choice or a moment that the story can take away. Everything else in the list is safe to clean up after the credits, or replayable from the pause menu.</p>
+    <ul class="trophy-list" id="missable-list"></ul>
   </section>
 
   <section id="view-sources" class="view" hidden>
-    <h2>Sources &amp; how this guide was built</h2>
-    <p class="lede">Every trophy's name, description and grade is the official PlayStation list as published on Exophase and PSNProfiles, who agree on all 55. Each guide is written in our own words from the official description, and names where its facts come from. A guide that cites no source earns no credit here, so every trophy below carries its sources.</p>
-    <ul class="source-list" id="sourceList"></ul>
-    <h3>Method notes</h3>
-    <ul class="notes">
-      <li>Counts (42 Shooting Range challenges, 250 stunts, 100 WAiNK locations and the rest) come from the official descriptions and the progress counts PSN tracks.</li>
-      <li>Where a location is not pinned down by the official description, the guide says so instead of inventing one.</li>
-      <li>No Rockstar logo, artwork or game screenshot is used anywhere in this guide. The look is our own.</li>
-      <li>The guide works fully offline: every file it loads sits under app/, and it makes no network request at run time.</li>
+    <h2>Sources</h2>
+    <p class="lede">Official names, descriptions and grades are as PlayStation publishes them, as listed by the two trophy trackers below. Every guide on this site is written for this entry, in our own words, from the official description — and where a description does not pin down an exact place or trigger, the guide says so instead of inventing one.</p>
+    <ul class="source-list">
+      <li><a href="https://www.exophase.com/game/grand-theft-auto-vi-psn/trophies/">Exophase — GTA VI trophy list</a><span>Official names, descriptions and grades.</span></li>
+      <li><a href="https://psnprofiles.com/trophies/43531-grand-theft-auto-vi">PSNProfiles — GTA VI trophies</a><span>Grades and the counts PlayStation tracks for each trophy.</span></li>
+      <li><strong>This guide's own notes</strong><span>Written for this entry from the official descriptions; not copied from any other guide.</span></li>
     </ul>
+    <h3>How to use the citations</h3>
+    <p>Open any trophy and its guide names its sources beside the steps. A specific place or step with no source beside it earns no trust here — if a guide cannot cite where a fact comes from, it says the fact is not pinned down yet.</p>
+  </section>
+
+  <section id="view-detail" class="view" hidden>
+    <p><a href="#/" class="back-link">&larr; Back to the checklist</a></p>
+    <article class="detail" id="detail"></article>
   </section>
 </main>
 
 <footer>
-  <div class="save-row">
-    <button type="button" id="exportBtn">Export progress (.json)</button>
-    <label class="import-btn">Import progress <input id="importFile" type="file" accept="application/json,.json"></label>
-    <button type="button" id="resetBtn">Reset progress</button>
-    <span class="saved-note" id="savedNote">Progress saves automatically in this browser.</span>
-  </div>
-  <p class="fineprint">Vice City Trophy Atlas is an unofficial fan guide. Grand Theft Auto and GTA are trademarks of Take-Two Interactive; this guide is not affiliated with Rockstar Games. Trophy names and descriptions are shown as PlayStation publishes them. Data: the official 55-trophy list, 1 platinum, 2 gold, 6 silver, 46 bronze.</p>
+  <p>Platinum Trail is an unofficial fan guide. Grand Theft Auto and GTA are trademarks of Take-Two Interactive; this guide uses no Rockstar Games logo, artwork, box art or game screenshots. Trophy names and descriptions are shown as PlayStation publishes them. The guide works fully offline — it loads nothing from the network.</p>
+  <p id="save-note">Progress is saved in this browser only (localStorage). Export a backup before clearing browser data.</p>
 </footer>
-<script type="module" src="app.js"></script>
+
+<script src="app.js"></script>
 </body>
 </html>
