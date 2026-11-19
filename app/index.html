@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Leonida Trophy Atlas — GTA VI Trophy Guide &amp; Tracker</title>
+<meta name="description" content="The offline guide and tracker for all 55 PlayStation 5 trophies of Grand Theft Auto VI: checklist, roadmap to the Platinum, missable flags, and a cited guide for every trophy.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="masthead">
+  <div class="brand">
+    <div class="brand-mark" aria-hidden="true">VI</div>
+    <div>
+      <h1>Leonida Trophy Atlas</h1>
+      <p class="subtitle">GTA VI &middot; 55 PlayStation 5 trophies &middot; offline guide &amp; tracker</p>
+    </div>
+  </div>
+  <div class="progress" id="progress" aria-live="polite">
+    <div class="progress-numbers"><strong id="earned-count">0 / 55</strong><span id="earned-percent">0% to the Platinum</span></div>
+    <div class="progress-bar"><div id="progress-fill"></div></div>
+    <p class="progress-grades" id="progress-grades"></p>
+  </div>
+</header>
+
+<nav class="tabs" aria-label="Guide sections">
+  <button type="button" data-view="checklist" class="tab active">Checklist</button>
+  <button type="button" data-view="roadmap" class="tab">Roadmap to the Platinum</button>
+  <button type="button" data-view="completion" class="tab">100% Completion</button>
+</nav>
+
+<section class="controls" aria-label="Tracker controls">
+  <label class="search">Search <input id="search" type="search" placeholder="Search a trophy, mission or place…" autocomplete="off"></label>
+  <div class="kinds" role="group" aria-label="Filter by kind">
+    <button type="button" data-kind="all" class="kind active">All</button>
+    <button type="button" data-kind="story" class="kind">Story</button>
+    <button type="button" data-kind="missable" class="kind">Missable</button>
+    <button type="button" data-kind="collectibles" class="kind">Collectibles</button>
+    <button type="button" data-kind="activities" class="kind">Activities</button>
+    <button type="button" data-kind="online" class="kind">Online</button>
+  </div>
+  <label>Grade
+    <select id="grade">
+      <option value="all">All grades</option>
+      <option value="platinum">Platinum</option>
+      <option value="gold">Gold</option>
+      <option value="silver">Silver</option>
+      <option value="bronze">Bronze</option>
+    </select>
+  </label>
+  <label>Show
+    <select id="earned-filter">
+      <option value="all">All trophies</option>
+      <option value="earned">Earned only</option>
+      <option value="missing">Not earned yet</option>
+    </select>
+  </label>
+  <label class="spoiler-toggle"><input id="spoiler" type="checkbox" checked> Hide story spoilers</label>
+  <div class="io">
+    <button id="export" type="button">Export progress</button>
+    <label class="import">Import progress <input id="import" type="file" accept="application/json,.json"></label>
+  </div>
+</section>
+
+<main>
+  <section id="view-checklist" class="view">
+    <div class="layout">
+      <div class="list-wrap">
+        <p id="missable-banner" class="banner">One trophy can be missed: <strong>Positive Mental Attitude</strong>. Do Lucia&rsquo;s balcony meditation in Chapter 1, before the chapter ends.</p>
+        <p id="list-summary" class="list-summary"></p>
+        <table class="trophies">
+          <thead><tr><th scope="col">Earned</th><th scope="col">Trophy</th><th scope="col">Grade</th><th scope="col">Kind</th><th scope="col">Guide</th></tr></thead>
+          <tbody id="rows"></tbody>
+        </table>
+        <p id="empty-state" class="empty" hidden></p>
+      </div>
+      <aside id="detail" class="detail" aria-live="polite"></aside>
+    </div>
+  </section>
+
+  <section id="view-roadmap" class="view" hidden>
+    <p class="lede">One playthrough is enough for the Platinum if you guard the missable step in Chapter 1 and keep a save at the start of every chapter. Roughly 200 hours in all: 60 to 80 of story, about 100 of checklist, and the rest cleanup.</p>
+    <ol id="phases" class="phases"></ol>
+    <p class="source-note">Roadmap built from the official trophy descriptions, with timings and warnings from the launch guides cited in each trophy. Sources: Output Lag, EGamers, GTA Zone, Press-Start.</p>
+  </section>
+
+  <section id="view-completion" class="view" hidden>
+    <p class="lede">A Long Road wants 100% completion. The checklist itself appears after the story under Progress &gt; Stats &gt; 100% Completion, but earlier work counts. Trophy targets sit below the checklist numbers, so earn the trophy first and keep going.</p>
+    <table class="completion">
+      <thead><tr><th scope="col">What</th><th scope="col">Trophy needs</th><th scope="col">100% checklist asks</th></tr></thead>
+      <tbody id="completion-rows"></tbody>
+    </table>
+    <p class="source-note">Figures from the launch guides: Press-Start published the checklist, EGamers compared the two columns. Meditation is the one disagreement: guides say 18 spots for the trophy and 15 for the checklist, so visit every spot you find.</p>
+  </section>
+</main>
+
+<footer>
+  <p>Unofficial fan guide. Grand Theft Auto and GTA are marks of Rockstar Games; this guide uses no Rockstar logo, artwork or game screenshots. Trophy names, descriptions and grades are as PlayStation publishes them. Guides are written for this page and cite their sources beside each trophy.</p>
+  <p>Sources for the list and the guides: the official PlayStation trophy list via Exophase (reported by Push Square), Output Lag, EGamers, Press-Start, GTA Vice City Hub, GTA Zone, HowToVideoGame, GTABase and PowerPyx. Five trophies had no confirmed method at launch; their guides say so.</p>
+</footer>
+
+<script type="module" src="app.js"></script>
+</body>
+</html>
