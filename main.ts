@@ -1,5 +1,5 @@
 import { createHash } from "node:crypto";
-import { existsSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 
 const root = new URL(".", import.meta.url).pathname;
@@ -50,5 +50,7 @@ const dossier = {
 };
 
 const out = JSON.stringify(dossier, null, 2) + "\n";
-writeFileSync(join(root, "dossier.json"), out);
+const outDir = process.env.MAKEFUN_OUTPUT_DIR || root;
+mkdirSync(outDir, { recursive: true });
+writeFileSync(join(outDir, "dossier.json"), out);
 console.log("dossier.json written:", out.length, "bytes,", files.length, "counted files,", trophies.total, "trophies");
