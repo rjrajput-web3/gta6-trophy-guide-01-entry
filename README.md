@@ -1,84 +1,84 @@
 # Platinum Trail — GTA VI Trophy Guide & Tracker
 
-An offline web app that is the best guide and tracker for the 55
-PlayStation 5 trophies of Grand Theft Auto VI: the official list with
-names, descriptions and grades, a checklist saved in the browser, export
-and import, filters by grade and kind, a spoiler setting that hides story
-trophies until they are earned, a seven-stage road to the Platinum, a
-flag on the one trophy you can possibly miss, and a guide in our own
-words for every trophy with its sources cited.
+An offline web app that is the best guide and tracker for the 55 PlayStation 5
+trophies of **Grand Theft Auto VI**: every trophy with its official name,
+description and grade, a checklist saved in the browser, export and import,
+filters by grade and category, a spoiler setting that hides story trophies
+until they are earned, a three-phase roadmap to the Platinum, and the missable
+trophies flagged — each trophy with a guide in our own words that cites its
+sources.
 
-## The list
+## The list at a glance
 
-55 trophies: 1 Platinum, 2 Gold, 6 Silver, 46 Bronze. All offline,
-single-player, no online trophies. One playthrough is enough.
+- **55 trophies:** 1 Platinum, 2 Gold, 6 Silver, 46 Bronze
+- **Platinum:** *Vice Got a Price!* — unlock every other trophy
+- **28 hidden** on PlayStation until earned; **0 online** trophies
+- **Difficulty 4/10, about 200 hours**, one playthrough is enough
+- **One possibly-missable trophy:** *Positive Mental Attitude* — meditate with
+  Lucia on the balcony at Jason's house in Chapter 1, or it may be gone for
+  good. Everything else is still earnable in free roam after the ending.
 
-Rockstar has not published an official list. The names, descriptions and
-grades here are the list reported on 18 November 2026 by Push Square and
-cross-checked against EGamers, GTAScoop, GameMapa and Mobalytics, which
-all report the same 55 trophies and the same grade split.
+## Roadmap
 
-## The one missable trophy
+1. **Story & side missions (60–80 h).** Play the story, take optional missions
+   as they appear, scan vehicles with WAiNK and study animals with binoculars.
+2. **The 100% checklist & Challenges (~100 h).** After the ending, the
+   checklist under Progress > Stats is the spine of the run: every robbery,
+   underwater discovery, shooting range, drone race and Bret quest, plus 70 of
+   the 80 Challenges and 15 of the 18 card sets.
+3. **Strangers & Freaks and cleanup (~10 h).** The five side-character finals
+   and any stray open-world trophies.
 
-**Positive Mental Attitude** (meditate at every spot across Leonida) is
-the only trophy the published guides flag as possibly missable. The first
-meditation is Lucia on the balcony at Jason's house in Chapter 1, and it
-is reported to disappear once that chapter ends. Whether it counts toward
-the 18 is unconfirmed, so the guide says to do it in Chapter 1. The app
-flags it on the checklist, in the banner at the top, and in its own guide.
-
-## The roadmap
-
-Seven stages: (1) before you start — cheats off, Chapter 1 meditation;
-(2) play the story — 12 story trophies; (3) stranger missions as they
-appear; (4) try every activity once, then shooting-range golds, drone
-races and races; (5) collections — cards, WAiNK scans, vehicles,
-meditations; (6) crime and money — vaults, trucks, shops, garages;
-(7) the 100% checklist for A Long Road, then the Platinum.
+No mission replay exists — keep a separate manual save at the start and end of
+every chapter. Cheats disable trophies and saving.
 
 ## Run it
 
-Static files under `app/` — no build step, no network at run time:
-
-```
-node serve.ts          # serves app/ at http://localhost:8080
+```sh
+node serve.ts        # serves app/ at http://localhost:8080
 ```
 
-Open `app/index.html` in a desktop browser. Progress is saved in the
-browser's local storage; Export downloads a JSON copy, Import loads one
-back.
+Or open `app/index.html` from any static server. The app works with the
+network off: it loads only its own files.
 
-## Hand in
+## Build the dossier
 
-`main.ts` copies `app/` and `screenshots/` to the output directory and
-writes `dossier.json` with `buildDossier` from
-`vendor/makefun-frontend.ts`:
-
-```
+```sh
 mkdir -p out && MAKEFUN_OUTPUT_DIR=out node main.ts
 ```
 
+`main.ts` copies `app/` and `screenshots/` into the output directory and
+writes `dossier.json` with `buildDossier` from `vendor/makefun-frontend.ts`.
+
+## Screenshots
+
+Four real renders of the guide's own code, taken in headless Chromium at
+1280×800 (see `shots.json` for the shot plan):
+
+1. `01-cover.jpg` — hero, progress bar, checklist
+2. `02-roadmap.jpg` — the three-phase roadmap to the Platinum
+3. `03-missable.jpg` — the missable filter: Positive Mental Attitude alone
+4. `04-detail.jpg` — a trophy guide open with its sources
+
 ## Sources
 
-- Push Square, "GTA 6: Trophy Guide & Roadmap" (published 2026-11-18) —
-  https://www.pushsquare.com/guides/gta-6-trophy-guide-and-roadmap
-- EGamers, "GTA 6 Trophy List: All 55 Trophies And Achievements" —
-  https://egamers.io/gta-6-trophy-list-all-55-trophies-and-achievements-plus-the-hardest-ones/
-- GTAScoop, "GTA 6 Trophies & Achievements: Full List of 55 and Platinum" —
-  https://gtascoop.com/guides/gta-6-trophies-achievements/
-- GameMapa, "All 55 GTA 6 Trophies: Full List, Gamerscore and Platinum Roadmap" —
-  https://gamemapa.com/en/gta-6/guides/gta-6-trophy-achievement-list/
-- Mobalytics, "Grand Theft Auto 6 - Full Trophy List & Walkthrough" (updated 2026-11-20) —
-  https://mobalytics.gg/gamebase/guides/grand-theft-auto-6-all-trophies
+Trophy names, descriptions and grades are the official PlayStation 5 list as
+reported by Push Square and cross-checked with GameMapa (GamesRadar+ /
+PowerPyx) and PSNProfiles / TrueTrophies counts:
 
-Guide text is written in our own words from the official descriptions
-and the counts those guides report. Five hidden trophies are still
-unsolved in the published guides (In the Beginning..., Capital Offense,
-Bad Luck, I Guess, The Truth Is Out There, Ten Pin); their entries say
-so honestly instead of guessing a method.
+- Push Square — GTA 6: Trophy Guide & Roadmap
+- GameMapa — All 55 GTA 6 Trophies: Full List, Gamerscore and Platinum Roadmap
+- PowerPyx — GTA 6 Trophy Guide & Roadmap (via GameMapa)
+- GamesRadar+ — GTA 6 Trophy and Achievement list (via GameMapa)
+- PSNProfiles / TrueTrophies — trophy counts and hidden flags (via sixshore)
 
-## Licence
+Guide text is written in our own words from those sources; every trophy card
+names the sources it draws on. Five hidden trophies (*In the Beginning…*,
+*Capital Offense*, *Bad Luck, I Guess*, *The Truth Is Out There*, *Ten Pin*)
+still have unconfirmed triggers — the guide says so plainly instead of
+inventing one.
 
-MIT — see LICENSE. Unofficial fan-made guide; Grand Theft Auto and GTA
-are trademarks of Take-Two Interactive. No Rockstar logo or official
-artwork is used anywhere in this app.
+## License
+
+MIT — see `LICENSE`. Unofficial fan guide; no Rockstar logo or official
+artwork is used anywhere in the app or its screenshots.
