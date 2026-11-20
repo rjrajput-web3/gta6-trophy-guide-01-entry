@@ -9,111 +9,102 @@
 <body>
 <header class="masthead">
   <div class="masthead-inner">
-    <p class="eyebrow">Grand Theft Auto VI &middot; PlayStation 5 &middot; Offline guide</p>
+    <p class="kicker">Grand Theft Auto VI &middot; PlayStation 5 &middot; Offline guide</p>
     <h1>Platinum Trail</h1>
-    <p class="tagline">Every one of the 55 official trophies — named, graded, guided and tracked to the platinum.</p>
-    <p class="audit-strip" id="audit-strip">Audit, checked 19 Nov 2026: 55 of 55 official names, descriptions and grades match Exophase and PSNProfiles; 28 of the 55 are hidden on PlayStation until earned; 8 missable trophies flagged with the reason each can be missed; every guide cites its sources with the check date.</p>
-    <div class="counts" id="counts" aria-live="polite">
-      <span><strong id="count-total">55</strong> trophies</span>
-      <span><strong>1</strong> platinum</span>
-      <span><strong>2</strong> gold</span>
-      <span><strong>6</strong> silver</span>
-      <span><strong>46</strong> bronze</span>
-      <span><strong>28</strong> hidden</span>
-      <span><strong>8</strong> missable</span>
-    </div>
-    <div class="progress-wrap">
-      <div class="progress-line"><span id="progress-label">0 of 55 earned</span><span id="points-label">0 / 1,230 trophy points</span></div>
-      <div class="progress-bar"><div class="progress-fill" id="progress-fill" style="width:0%"></div></div>
+    <p class="tagline">Every one of the 55 Leonida trophies: the official list, a tracker that remembers your progress, a seven-stage road to the Platinum, and a guide for each trophy written in plain words with its sources cited.</p>
+    <div class="progress-wrap" id="progressWrap">
+      <div class="progress-line"><span id="progressText">0 of 55 trophies earned</span><span id="progressPct">0%</span></div>
+      <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+      <div class="progress-counts" id="progressCounts"></div>
     </div>
   </div>
 </header>
 
-<nav class="views" aria-label="Views">
-  <a href="#/" data-view="checklist" class="view-link">Checklist</a>
-  <a href="#/roadmap" data-view="roadmap" class="view-link">Platinum Roadmap</a>
-  <a href="#/missable" data-view="missable" class="view-link">Missable <span class="pill" id="missable-pill">8</span></a>
-  <a href="#/sources" data-view="sources" class="view-link">Sources</a>
-</nav>
-
-<section class="toolbar" aria-label="Filters and tools">
-  <input type="search" id="search" placeholder="Search trophies by name or description…" aria-label="Search trophies">
-  <div class="kind-filters" role="group" aria-label="Filter by kind">
-    <button type="button" data-kind="all" class="kind-btn active">All</button>
-    <button type="button" data-kind="story" class="kind-btn">Story</button>
-    <button type="button" data-kind="missable" class="kind-btn">Missable</button>
-    <button type="button" data-kind="collectibles" class="kind-btn">Collectibles</button>
-    <button type="button" data-kind="activities" class="kind-btn">Activities</button>
-    <button type="button" data-kind="online" class="kind-btn">Online</button>
-  </div>
-  <label class="field">Grade
-    <select id="grade-filter">
-      <option value="all">All grades</option>
-      <option value="platinum">Platinum</option>
-      <option value="gold">Gold</option>
-      <option value="silver">Silver</option>
-      <option value="bronze">Bronze</option>
-    </select>
-  </label>
-  <label class="field">Sort
-    <select id="sort">
-      <option value="list">List order</option>
-      <option value="name">Name A–Z</option>
-      <option value="grade">Grade (best first)</option>
-      <option value="kind">Kind</option>
-    </select>
-  </label>
-  <label class="toggle"><input type="checkbox" id="spoiler-toggle"> Spoiler-safe mode</label>
-  <div class="tools">
-    <button type="button" id="export-btn">Export progress</button>
-    <button type="button" id="import-btn">Import progress</button>
-    <input type="file" id="import-file" accept=".json,application/json" hidden>
-    <button type="button" id="reset-btn">Reset</button>
-  </div>
-  <p class="spoiler-note" id="spoiler-note" hidden>Spoiler-safe mode is on: story trophy names and descriptions are hidden until you earn them.</p>
-</section>
-
-<main id="main">
-  <section id="view-checklist" class="view">
-    <article class="featured-guide" id="featured-guide" aria-label="Featured guide"></article>
-    <p class="result-line" id="result-line"></p>
-    <ul class="trophy-list" id="trophy-list"></ul>
-    <p class="empty" id="empty-state" hidden>No trophies match these filters. Clear the search or pick another kind.</p>
+<main>
+  <section class="alert" id="missableAlert">
+    <h2>Do this first &mdash; the one trophy you can miss</h2>
+    <p><strong>Positive Mental Attitude</strong> (meditate at every spot across Leonida) is the only trophy the published guides flag as possibly missable. The first meditation is Lucia on the balcony at Jason&rsquo;s house in Chapter 1, and it is reported to disappear once that chapter ends. Whether it counts toward the 18 is unconfirmed, so do it in Chapter 1 and let the final zen animation play. Everything else can be cleaned up in free roam after the story.</p>
+    <button type="button" id="missableOpen">Open its guide</button>
   </section>
 
-  <section id="view-roadmap" class="view" hidden>
-    <h2>The road to the platinum</h2>
-    <p class="lede" id="roadmap-lede">Built from the official descriptions: seven stages, in order. Stage 1 opens the story, stage 2 runs it to the finale, stage 3 clears every missable trophy before the finale, stages 4 and 5 sweep collectibles and activities, stage 6 grinds the long counts, and stage 7 is the platinum itself.</p>
-    <ol class="roadmap" id="roadmap"></ol>
+  <section class="toolbar" aria-label="Trophy filters">
+    <input type="search" id="searchBox" placeholder="Search a trophy by name or word&hellip;" aria-label="Search trophies">
+    <div class="grade-filters" id="gradeFilters" role="group" aria-label="Filter by grade">
+      <button type="button" data-grade="all" class="active">All 55</button>
+      <button type="button" data-grade="platinum">Platinum</button>
+      <button type="button" data-grade="gold">Gold</button>
+      <button type="button" data-grade="silver">Silver</button>
+      <button type="button" data-grade="bronze">Bronze</button>
+    </div>
+    <label class="kind-label">Kind
+      <select id="kindFilter">
+        <option value="all">Every kind</option>
+        <option value="story">Story</option>
+        <option value="completion">Completion</option>
+        <option value="collection">Collection</option>
+        <option value="activity">Activity</option>
+        <option value="stranger">Stranger missions</option>
+        <option value="crime">Crime</option>
+        <option value="exploration">Exploration</option>
+        <option value="money">Money &amp; property</option>
+      </select>
+    </label>
+    <label class="check-label"><input type="checkbox" id="spoilerToggle"> Hide story trophies until earned</label>
+    <label class="check-label"><input type="checkbox" id="earnedOnly"> Earned only</label>
+    <div class="io-buttons">
+      <button type="button" id="exportBtn">Export progress</button>
+      <button type="button" id="importBtn">Import progress</button>
+      <input type="file" id="importFile" accept="application/json,.json" hidden>
+    </div>
   </section>
 
-  <section id="view-missable" class="view" hidden>
-    <h2>Missable trophies — do these before the finale</h2>
-    <p class="lede" id="missable-lede">Eight trophies need a person, a choice or a moment that the story can take away: five contact finales, two partner trophies and the choices trophy. Each one below names the exact reason it can be missed. Everything else in the list is safe to clean up after the credits, or replayable from the pause menu.</p>
-    <ul class="trophy-list" id="missable-list"></ul>
+  <section class="roadmap" id="roadmapSection">
+    <h2>The road to the Platinum in seven stages</h2>
+    <p class="section-note">Roughly 200&ndash;300 hours in total, most of it the road to 100% completion. Play the story first, clean up after it.</p>
+    <ol class="stages">
+      <li><strong>Stage 1 &mdash; Before you start.</strong> Cheats off: using a cheat disables trophies and saving for the session. Turn the spoiler setting on if you want story trophies hidden. In Chapter 1, do the balcony meditation at Jason&rsquo;s house.</li>
+      <li><strong>Stage 2 &mdash; Play the story.</strong> Enjoy the campaign at your own pace. Twelve story trophies pop as the chapters and key missions finish, ending with the Gold for the final mission. Free roam stays open after the credits.</li>
+      <li><strong>Stage 3 &mdash; Stranger missions.</strong> Eight stranger strands run through the game. Take each one the moment it appears: at least one guide reports that some stranger chains are tied to story progress. Their finales carry their own trophies.</li>
+      <li><strong>Stage 4 &mdash; Try everything once.</strong> Sample all nine activity types for Master of None, then work the shooting ranges for gold in all 42 challenges, win the 14 drone races and 20 different races, and bowl a frame or two.</li>
+      <li><strong>Stage 5 &mdash; Collections.</strong> Cards (3 sets for the trophy, 15 for 100%), 100 WAiNK scans, 100 vehicles discovered, 18 meditation spots. Scan everything you pass; it all counts twice.</li>
+      <li><strong>Stage 6 &mdash; Crime and money.</strong> Five bank vaults, an armored truck, three shops back-to-back with your partner, a jewelry store without being seen. Launder $250,000 of Marked Bills, spend $100,000 in shops, buy all eight garages ($160,000) and register ten vehicles.</li>
+      <li><strong>Stage 7 &mdash; The 100% checklist.</strong> The checklist appears under Progress after the story. Finish it for A Long Road: 250 of the 397 stunts, 50 of the 80 challenges (70 for 100%), and the rest. The Platinum follows the moment the last trophy pops.</li>
+    </ol>
   </section>
 
-  <section id="view-sources" class="view" hidden>
-    <h2>Sources</h2>
-    <p class="lede" id="sources-lede">Official names, descriptions and grades are as PlayStation publishes them, as listed by the two trophy trackers below and re-checked on 19 Nov 2026. Every guide on this site is written for this entry, in our own words, from the official description — and where a description does not pin down an exact place or trigger, the guide says so instead of inventing one. Count targets are the exact totals PlayStation tracks, as PSNProfiles shows them on 19 Nov 2026.</p>
-    <ul class="source-list">
-      <li><a href="https://www.exophase.com/game/grand-theft-auto-vi-psn/trophies/">Exophase — GTA VI trophy list</a><span>Official names, descriptions and grades. Checked 19 Nov 2026.</span></li>
-      <li><a href="https://psnprofiles.com/trophies/43531-grand-theft-auto-vi">PSNProfiles — GTA VI trophies</a><span>Grades and the counts PlayStation tracks for each trophy. Checked 19 Nov 2026.</span></li>
-      <li><strong>This guide's own notes</strong><span>Written for this entry from the official descriptions; not copied from any other guide.</span></li>
+  <section class="detail" id="detailPanel" hidden>
+    <button type="button" class="detail-close" id="detailClose">Close guide &times;</button>
+    <div id="detailBody"></div>
+  </section>
+
+  <section class="list-section">
+    <h2 id="listHeading">All 55 trophies</h2>
+    <p class="section-note" id="listNote">Tick a trophy when it pops. Progress is saved in this browser only, and export keeps a copy you can carry to another machine.</p>
+    <ul class="trophy-list" id="trophyList"></ul>
+    <p class="empty-note" id="emptyNote" hidden>No trophies match those filters. Clear the search or pick another grade.</p>
+  </section>
+
+  <section class="facts">
+    <h2>Facts worth knowing</h2>
+    <ul>
+      <li><strong>55 trophies:</strong> 1 Platinum, 2 Gold, 6 Silver, 46 Bronze. The same list is the 55 achievements on Xbox Series X|S, worth 1,000 Gamerscore.</li>
+      <li><strong>No online trophies.</strong> Everything is single-player and offline. One playthrough is enough, and there are no mission gold medals and no mission replay.</li>
+      <li><strong>Cheats disable trophies and saving</strong> for the session, so keep them off for the whole run.</li>
+      <li><strong>28 of the 55 stay hidden</strong> on PlayStation until earned, which is why the spoiler setting hides story trophies here until you tick them.</li>
+      <li><strong>Five hidden trophies are still unsolved</strong> in the published guides (In the Beginning..., Capital Offense, Bad Luck, I Guess, The Truth Is Out There, Ten Pin). Their entries below say so honestly instead of guessing.</li>
+      <li><strong>List status:</strong> Rockstar has not published an official list. Names, descriptions and grades are the list reported on 18 November 2026 and cross-checked across five guides; see Sources below.</li>
     </ul>
-    <h3>How to use the citations</h3>
-    <p>Open any trophy and its guide names its sources beside the steps, with the 19 Nov 2026 check date. A specific place or step with no source beside it earns no trust here — if a guide cannot cite where a fact comes from, it says the fact is not pinned down yet.</p>
   </section>
 
-  <section id="view-detail" class="view" hidden>
-    <p><a href="#/" class="back-link">&larr; Back to the checklist</a></p>
-    <article class="detail" id="detail"></article>
+  <section class="sources">
+    <h2>Sources</h2>
+    <ul id="sourceList"></ul>
+    <p class="section-note">Guide text on this page is written in our own words from the official descriptions and the counts the guides report. It paraphrases, never copies, other guides. No Rockstar logo or official artwork is used anywhere in this app.</p>
   </section>
 </main>
 
 <footer>
-  <p>Platinum Trail is an unofficial fan guide. Grand Theft Auto and GTA are trademarks of Take-Two Interactive; this guide uses no Rockstar Games logo, artwork, box art or game screenshots. Trophy names and descriptions are shown as PlayStation publishes them. The guide works fully offline — it loads nothing from the network.</p>
-  <p id="save-note">Progress is saved in this browser only (localStorage). Export a backup before clearing browser data.</p>
+  <p>Platinum Trail is an unofficial fan-made guide. Grand Theft Auto and GTA are trademarks of Take-Two Interactive. This app works fully offline: it makes no network request at run time.</p>
 </footer>
 
 <script src="app.js"></script>
