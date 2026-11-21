@@ -1,0 +1,1 @@
+{"description":"Platinum Trail — GTA VI trophy guide, four-stage platinum roadmap and offline tracker (make.fun gta6-trophy-guide-01 entry).","engines":{"node":">=22.18"},"license":"MIT","name":"gta6-trophy-guide-01-entry","private":true,"scripts":{"hand-in":"node main.ts","serve":"node serve.ts"},"type":"module","version":"11.0.0"}
